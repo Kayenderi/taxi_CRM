@@ -1,0 +1,312 @@
+/* ----- ОБНУЛЕНИЕ И БАЗА ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 16px 30px;
+}
+
+/* ----- ШАПКА ----- */
+.header {
+    background: #2c2c2c;
+    padding: 16px 0;
+    border-bottom: 2px solid #ff9100;
+    margin-bottom: 20px;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff9100;
+}
+
+.driver-info {
+    text-align: right;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.driver-info span {
+    display: block;
+}
+
+/* ----- СТАТИСТИКА (3 карточки) ----- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: #2c2c2c;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    border-left: 4px solid #555;
+}
+
+.stat-card.profit {
+    border-left-color: #00c853;
+}
+.stat-card.income {
+    border-left-color: #2979ff;
+}
+.stat-card.expense {
+    border-left-color: #ff1744;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #aaa;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.stat-card.profit .stat-value {
+    color: #00c853;
+}
+.stat-card.income .stat-value {
+    color: #2979ff;
+}
+.stat-card.expense .stat-value {
+    color: #ff1744;
+}
+
+.stat-sub {
+    font-size: 12px;
+    color: #888;
+    display: block;
+    margin-top: 4px;
+}
+
+/* ----- КНОПКИ ДЕЙСТВИЙ ----- */
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    flex: 1;
+    min-width: 140px;
+}
+
+.btn-primary {
+    background: #ff9100;
+    color: #1a1a1a;
+}
+.btn-primary:hover {
+    background: #ffab40;
+}
+
+.btn-danger {
+    background: #d32f2f;
+    color: #fff;
+}
+.btn-danger:hover {
+    background: #f44336;
+}
+
+.btn-secondary {
+    background: #424242;
+    color: #e0e0e0;
+}
+.btn-secondary:hover {
+    background: #616161;
+}
+
+/* ----- СПИСОК ОПЕРАЦИЙ ----- */
+.operations h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #ccc;
+}
+
+.operations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.operation-item {
+    background: #2c2c2c;
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #555;
+}
+
+.operation-item.income {
+    border-left-color: #2979ff;
+}
+.operation-item.expense {
+    border-left-color: #ff1744;
+}
+
+.op-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.op-amount {
+    font-weight: 700;
+    font-size: 18px;
+}
+.operation-item.income .op-amount {
+    color: #2979ff;
+}
+.operation-item.expense .op-amount {
+    color: #ff1744;
+}
+
+.op-desc {
+    font-size: 14px;
+    color: #aaa;
+}
+.op-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.op-right {
+    text-align: right;
+}
+.op-category {
+    font-size: 12px;
+    background: #424242;
+    padding: 2px 10px;
+    border-radius: 20px;
+    color: #ccc;
+}
+
+/* ----- МОДАЛЬНОЕ ОКНО ----- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #2c2c2c;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    font-size: 28px;
+    color: #aaa;
+    cursor: pointer;
+}
+.modal-close:hover {
+    color: #fff;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.modal-content label {
+    display: block;
+    margin: 12px 0 4px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-size: 16px;
+}
+.modal-content input:focus,
+.modal-content select:focus {
+    outline: 2px solid #ff9100;
+}
+
+.modal-content .btn {
+    margin-top: 16px;
+    width: 100%;
+}
+
+/* ----- АДАПТАЦИЯ (Мобилка) ----- */
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .header .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    .driver-info {
+        text-align: left;
+        width: 100%;
+    }
+    .actions {
+        flex-direction: column;
+    }
+    .btn {
+        min-width: auto;
+    }
+}

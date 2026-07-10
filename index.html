@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>🚗 Taxi CRM — Профиль</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <title>🚗 Taxi CRM — Управление доходами</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
+    </script>
     <style>
         /* ============================================================
            СТИЛИ
            ============================================================ */
-        
+
         :root {
             --yandex-blue: #1a73e8;
             --yandex-blue-dark: #1557b0;
@@ -18,28 +19,28 @@
             --yandex-green: #34c759;
             --yandex-orange: #ff9500;
             --yandex-yellow: #ffcc00;
-            
+
             --bg-primary: #f5f7fa;
             --bg-card: #ffffff;
             --bg-header: #ffffff;
             --bg-nav: #ffffff;
             --bg-input: #f5f7fa;
             --bg-modal: #ffffff;
-            
+
             --text-primary: #1a1a2e;
             --text-secondary: #6c7a8a;
             --text-muted: #9aa6b5;
-            
+
             --border-color: #e8ecf0;
             --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
             --shadow-card-hover: 0 6px 24px rgba(0, 0, 0, 0.10);
             --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.15);
-            
+
             --radius-sm: 10px;
             --radius-md: 16px;
             --radius-lg: 20px;
             --radius-full: 50px;
-            
+
             --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, system-ui, sans-serif;
         }
 
@@ -50,11 +51,11 @@
             --bg-nav: #0d0d24;
             --bg-input: #1a1a3e;
             --bg-modal: #14142e;
-            
+
             --text-primary: #e8edf5;
             --text-secondary: #8899b0;
             --text-muted: #5a6a80;
-            
+
             --border-color: #2a2a4a;
             --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3);
             --shadow-card-hover: 0 6px 24px rgba(0, 0, 0, 0.5);
@@ -157,8 +158,12 @@
         }
 
         @keyframes spinRing {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .loader-dots {
@@ -176,13 +181,27 @@
             opacity: 0.4;
         }
 
-        .loader-dots .dot:nth-child(1) { animation-delay: 0s; }
-        .loader-dots .dot:nth-child(2) { animation-delay: 0.2s; }
-        .loader-dots .dot:nth-child(3) { animation-delay: 0.4s; }
+        .loader-dots .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .loader-dots .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .loader-dots .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes dotBounce {
-            0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
-            30% { transform: translateY(-10px); opacity: 1; }
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.3;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
         }
 
         .loader-text {
@@ -207,9 +226,15 @@
         }
 
         @keyframes progressBar {
-            0% { width: 0%; }
-            50% { width: 70%; }
-            100% { width: 100%; }
+            0% {
+                width: 0%;
+            }
+            50% {
+                width: 70%;
+            }
+            100% {
+                width: 100%;
+            }
         }
 
         /* ============================================================
@@ -254,7 +279,10 @@
             align-items: center;
             justify-content: center;
             font-size: 22px;
+            font-weight: 800;
             color: #fff;
+            box-shadow: 0 2px 12px rgba(26, 115, 232, 0.3);
+            flex-shrink: 0;
         }
 
         .auth-container .logo .logo-text {
@@ -391,7 +419,7 @@
         }
 
         /* ============================================================
-           ШАПКА
+           ШАПКА (С НОВЫМ ЛОГОТИПОМ "Т")
            ============================================================ */
         .header {
             background: var(--bg-header);
@@ -413,34 +441,56 @@
             padding-bottom: 0;
         }
 
+        /* ===== НОВЫЙ ЛОГОТИП С БУКВОЙ "Т" ===== */
         .logo {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 36px;
-            height: 36px;
+        .logo .logo-icon {
+            width: 44px;
+            height: 44px;
             background: linear-gradient(135deg, var(--yandex-blue), var(--yandex-blue-dark));
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 24px;
+            font-weight: 800;
             color: #fff;
-            box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+            box-shadow: 0 2px 12px rgba(26, 115, 232, 0.3);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
         }
 
-        .logo-text {
-            font-size: 18px;
+        .logo:hover .logo-icon {
+            transform: scale(1.05);
+        }
+
+        .logo .logo-text {
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.3px;
         }
 
-        .logo-text span { color: var(--yandex-blue); }
+        .logo .logo-text span {
+            color: var(--yandex-blue);
+        }
+
+        .logo .logo-sub {
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: -2px;
+        }
+
+        /* ===== КОНЕЦ НОВОГО ЛОГОТИПА ===== */
 
         .header-right {
             display: flex;
@@ -488,45 +538,6 @@
             font-size: 12px;
         }
 
-        .avatar-big {
-            width: 80px;
-            height: 80px;
-            font-size: 32px;
-            margin: 0 auto 12px;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: #fff;
-            user-select: none;
-            position: relative;
-        }
-
-        .avatar-big:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 30px rgba(0,0,0,0.15);
-        }
-
-        .avatar-big .edit-badge {
-            position: absolute;
-            bottom: -2px;
-            right: -2px;
-            background: var(--yandex-blue);
-            border-radius: 50%;
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: #fff;
-            border: 2px solid var(--bg-card);
-        }
-
         .driver-badge .name {
             font-weight: 500;
             color: var(--text-primary);
@@ -568,7 +579,9 @@
             transform: scale(1.05);
         }
 
-        .theme-toggle:active { transform: scale(0.92); }
+        .theme-toggle:active {
+            transform: scale(0.92);
+        }
 
         /* ============================================================
            НАВИГАЦИЯ
@@ -595,7 +608,9 @@
             scrollbar-width: none;
         }
 
-        .nav .container::-webkit-scrollbar { display: none; }
+        .nav .container::-webkit-scrollbar {
+            display: none;
+        }
 
         .nav-link {
             color: var(--text-secondary);
@@ -614,14 +629,21 @@
             justify-content: center;
         }
 
-        .nav-link:active { transform: scale(0.95); }
-        .nav-link:hover { background: var(--bg-input); color: var(--text-primary); }
+        .nav-link:active {
+            transform: scale(0.95);
+        }
+        .nav-link:hover {
+            background: var(--bg-input);
+            color: var(--text-primary);
+        }
         .nav-link.active {
             background: var(--yandex-blue);
             color: #fff;
             box-shadow: 0 2px 12px rgba(26, 115, 232, 0.3);
         }
-        .nav-link .nav-icon { font-size: 16px; }
+        .nav-link .nav-icon {
+            font-size: 16px;
+        }
 
         /* ============================================================
            СТРАНИЦЫ
@@ -645,8 +667,14 @@
         }
 
         @keyframes pageFadeIn {
-            0% { opacity: 0; transform: translateY(8px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ============================================================
@@ -680,12 +708,22 @@
             border-radius: 0 0 4px 4px;
         }
 
-        .dashboard-stats .stat-card.profit::after { background: var(--yandex-green); }
-        .dashboard-stats .stat-card.income::after { background: var(--yandex-blue); }
-        .dashboard-stats .stat-card.expense::after { background: var(--yandex-red); }
-        .dashboard-stats .stat-card.orders::after { background: var(--yandex-orange); }
+        .dashboard-stats .stat-card.profit::after {
+            background: var(--yandex-green);
+        }
+        .dashboard-stats .stat-card.income::after {
+            background: var(--yandex-blue);
+        }
+        .dashboard-stats .stat-card.expense::after {
+            background: var(--yandex-red);
+        }
+        .dashboard-stats .stat-card.orders::after {
+            background: var(--yandex-orange);
+        }
 
-        .dashboard-stats .stat-card:active { transform: scale(0.96); }
+        .dashboard-stats .stat-card:active {
+            transform: scale(0.96);
+        }
         .dashboard-stats .stat-card:hover {
             box-shadow: var(--shadow-card-hover);
             transform: translateY(-2px);
@@ -710,10 +748,18 @@
             letter-spacing: -0.5px;
         }
 
-        .dashboard-stats .stat-card.profit .stat-value { color: var(--yandex-green); }
-        .dashboard-stats .stat-card.income .stat-value { color: var(--yandex-blue); }
-        .dashboard-stats .stat-card.expense .stat-value { color: var(--yandex-red); }
-        .dashboard-stats .stat-card.orders .stat-value { color: var(--yandex-orange); }
+        .dashboard-stats .stat-card.profit .stat-value {
+            color: var(--yandex-green);
+        }
+        .dashboard-stats .stat-card.income .stat-value {
+            color: var(--yandex-blue);
+        }
+        .dashboard-stats .stat-card.expense .stat-value {
+            color: var(--yandex-red);
+        }
+        .dashboard-stats .stat-card.orders .stat-value {
+            color: var(--yandex-orange);
+        }
 
         .dashboard-stats .stat-sub {
             font-size: 12px;
@@ -749,8 +795,14 @@
         }
 
         @keyframes changePop {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .dashboard-metrics {
@@ -834,8 +886,14 @@
         }
 
         @keyframes fadeSlideIn {
-            0% { opacity: 0; transform: translateY(-8px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .chart-filters .custom-date-range input {
@@ -918,9 +976,18 @@
         }
 
         @keyframes chartUpdate {
-            0% { opacity: 0.6; transform: scale(0.98); }
-            50% { opacity: 0.9; transform: scale(1.01); }
-            100% { opacity: 1; transform: scale(1); }
+            0% {
+                opacity: 0.6;
+                transform: scale(0.98);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.01);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .dashboard-recent {
@@ -948,15 +1015,31 @@
             animation: opItemFade 0.3s ease backwards;
         }
 
-        .dashboard-recent .op-item:nth-child(1) { animation-delay: 0.03s; }
-        .dashboard-recent .op-item:nth-child(2) { animation-delay: 0.06s; }
-        .dashboard-recent .op-item:nth-child(3) { animation-delay: 0.09s; }
-        .dashboard-recent .op-item:nth-child(4) { animation-delay: 0.12s; }
-        .dashboard-recent .op-item:nth-child(5) { animation-delay: 0.15s; }
+        .dashboard-recent .op-item:nth-child(1) {
+            animation-delay: 0.03s;
+        }
+        .dashboard-recent .op-item:nth-child(2) {
+            animation-delay: 0.06s;
+        }
+        .dashboard-recent .op-item:nth-child(3) {
+            animation-delay: 0.09s;
+        }
+        .dashboard-recent .op-item:nth-child(4) {
+            animation-delay: 0.12s;
+        }
+        .dashboard-recent .op-item:nth-child(5) {
+            animation-delay: 0.15s;
+        }
 
         @keyframes opItemFade {
-            0% { opacity: 0; transform: translateX(-8px); }
-            100% { opacity: 1; transform: translateX(0); }
+            0% {
+                opacity: 0;
+                transform: translateX(-8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .dashboard-recent .op-item:last-child {
@@ -1014,8 +1097,13 @@
             letter-spacing: 0.2px;
         }
 
-        .btn:active { transform: scale(0.95); }
-        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .btn:active {
+            transform: scale(0.95);
+        }
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
 
         .btn-primary {
             background: var(--yandex-blue);
@@ -1049,7 +1137,9 @@
             transform: translateY(-2px);
         }
 
-        .btn .btn-icon { font-size: 18px; }
+        .btn .btn-icon {
+            font-size: 18px;
+        }
 
         .money-list {
             background: var(--bg-card);
@@ -1089,11 +1179,21 @@
             animation: opItemFade 0.3s ease backwards;
         }
 
-        .money-list .op-item:nth-child(1) { animation-delay: 0.02s; }
-        .money-list .op-item:nth-child(2) { animation-delay: 0.04s; }
-        .money-list .op-item:nth-child(3) { animation-delay: 0.06s; }
-        .money-list .op-item:nth-child(4) { animation-delay: 0.08s; }
-        .money-list .op-item:nth-child(5) { animation-delay: 0.10s; }
+        .money-list .op-item:nth-child(1) {
+            animation-delay: 0.02s;
+        }
+        .money-list .op-item:nth-child(2) {
+            animation-delay: 0.04s;
+        }
+        .money-list .op-item:nth-child(3) {
+            animation-delay: 0.06s;
+        }
+        .money-list .op-item:nth-child(4) {
+            animation-delay: 0.08s;
+        }
+        .money-list .op-item:nth-child(5) {
+            animation-delay: 0.10s;
+        }
 
         .money-list .op-item:last-child {
             border-bottom: none;
@@ -1110,8 +1210,12 @@
             font-size: 16px;
         }
 
-        .money-list .op-item .op-amount.income { color: var(--yandex-blue); }
-        .money-list .op-item .op-amount.expense { color: var(--yandex-red); }
+        .money-list .op-item .op-amount.income {
+            color: var(--yandex-blue);
+        }
+        .money-list .op-item .op-amount.expense {
+            color: var(--yandex-red);
+        }
 
         .money-list .op-item .op-desc {
             font-size: 14px;
@@ -1184,6 +1288,45 @@
         .profile-avatar-section {
             text-align: center;
             margin-bottom: 20px;
+        }
+
+        .avatar-big {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 600;
+            color: #fff;
+            margin: 0 auto 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            user-select: none;
+            position: relative;
+        }
+
+        .avatar-big:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .avatar-big .edit-badge {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            background: var(--yandex-blue);
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #fff;
+            border: 2px solid var(--bg-card);
         }
 
         .color-picker {
@@ -1289,14 +1432,30 @@
         }
 
         /* Цвета для аватарок */
-        .avatar-color-0 { background: #1a73e8; }
-        .avatar-color-1 { background: #34c759; }
-        .avatar-color-2 { background: #ff9500; }
-        .avatar-color-3 { background: #ff3b30; }
-        .avatar-color-4 { background: #5856d6; }
-        .avatar-color-5 { background: #ff2d92; }
-        .avatar-color-6 { background: #34aadc; }
-        .avatar-color-7 { background: #8e8e93; }
+        .avatar-color-0 {
+            background: #1a73e8;
+        }
+        .avatar-color-1 {
+            background: #34c759;
+        }
+        .avatar-color-2 {
+            background: #ff9500;
+        }
+        .avatar-color-3 {
+            background: #ff3b30;
+        }
+        .avatar-color-4 {
+            background: #5856d6;
+        }
+        .avatar-color-5 {
+            background: #ff2d92;
+        }
+        .avatar-color-6 {
+            background: #34aadc;
+        }
+        .avatar-color-7 {
+            background: #8e8e93;
+        }
 
         /* ============================================================
            МОДАЛЬНОЕ ОКНО
@@ -1318,7 +1477,9 @@
             padding: 16px;
         }
 
-        .modal.show { display: flex; }
+        .modal.show {
+            display: flex;
+        }
 
         .modal-content {
             background: var(--bg-modal);
@@ -1414,7 +1575,7 @@
             display: inline-block;
             width: 20px;
             height: 20px;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-top-color: #fff;
             border-radius: 50%;
             animation: spinRing 0.6s linear infinite;
@@ -1449,50 +1610,157 @@
            АДАПТАЦИЯ
            ============================================================ */
         @media (min-width: 600px) {
-            .container { padding: 0 24px 30px; }
-            .dashboard-stats { gap: 14px; }
-            .dashboard-stats .stat-value { font-size: 28px; }
-            .dashboard-stats .stat-card { padding: 20px 18px; }
-            .dashboard-metrics { grid-template-columns: repeat(4, 1fr); }
-            .money-actions { grid-template-columns: 1fr 1fr 1fr; }
-            .money-actions .btn:last-child { grid-column: auto; }
-            .btn { min-height: 46px; padding: 10px 20px; }
-            .logo-text { font-size: 20px; }
-            .driver-badge .name { max-width: 150px; }
-            .modal-content { padding: 32px 32px 28px; }
-            .nav-link { flex: none; padding: 10px 28px; }
-            .dashboard-charts { grid-template-columns: 1fr 1fr; }
-            .dashboard-chart canvas { max-height: 220px; }
-            .dashboard-chart.full-width canvas { max-height: 240px; }
-            .auth-container { padding: 48px 40px; }
-            .profile-container { padding: 0 20px; }
+            .container {
+                padding: 0 24px 30px;
+            }
+            .dashboard-stats {
+                gap: 14px;
+            }
+            .dashboard-stats .stat-value {
+                font-size: 28px;
+            }
+            .dashboard-stats .stat-card {
+                padding: 20px 18px;
+            }
+            .dashboard-metrics {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .money-actions {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .money-actions .btn:last-child {
+                grid-column: auto;
+            }
+            .btn {
+                min-height: 46px;
+                padding: 10px 20px;
+            }
+            .logo .logo-text {
+                font-size: 22px;
+            }
+            .logo .logo-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 26px;
+            }
+            .driver-badge .name {
+                max-width: 150px;
+            }
+            .modal-content {
+                padding: 32px 32px 28px;
+            }
+            .nav-link {
+                flex: none;
+                padding: 10px 28px;
+            }
+            .dashboard-charts {
+                grid-template-columns: 1fr 1fr;
+            }
+            .dashboard-chart canvas {
+                max-height: 220px;
+            }
+            .dashboard-chart.full-width canvas {
+                max-height: 240px;
+            }
+            .auth-container {
+                padding: 48px 40px;
+            }
+            .profile-container {
+                padding: 0 20px;
+            }
         }
 
         @media (max-width: 420px) {
-            .dashboard-stats { gap: 6px; }
-            .dashboard-stats .stat-card { padding: 12px 10px; }
-            .dashboard-stats .stat-value { font-size: 18px; }
-            .dashboard-stats .stat-label { font-size: 10px; }
-            .dashboard-metrics { grid-template-columns: 1fr 1fr; gap: 6px; }
-            .metric-card { padding: 10px; }
-            .metric-card .metric-value { font-size: 15px; }
-            .btn { font-size: 13px; min-height: 44px; padding: 10px 12px; }
-            .nav-link { font-size: 13px; padding: 8px 12px; }
-            .logo-text { font-size: 15px; }
-            .logo-icon { width: 30px; height: 30px; font-size: 14px; }
-            .driver-badge { font-size: 11px; padding: 2px 8px 2px 4px; }
-            .driver-badge .avatar { width: 22px; height: 22px; font-size: 10px; }
-            .driver-badge .name { max-width: 50px; }
-            .driver-badge .car-model { font-size: 9px; padding: 0 6px; }
-            .dashboard-charts { grid-template-columns: 1fr; }
-            .dashboard-chart canvas { max-height: 160px; }
-            .dashboard-chart.full-width canvas { max-height: 180px; }
-            .chart-filters .filter-btn { font-size: 11px; padding: 4px 12px; }
-            .chart-filters .custom-date-range input { font-size: 11px; padding: 4px 8px; }
-            .stat-change { font-size: 10px; padding: 1px 8px; }
-            .auth-container { padding: 24px 16px; }
-            .profile-card { padding: 20px 16px; }
-            .avatar-big { width: 64px; height: 64px; font-size: 26px; }
+            .dashboard-stats {
+                gap: 6px;
+            }
+            .dashboard-stats .stat-card {
+                padding: 12px 10px;
+            }
+            .dashboard-stats .stat-value {
+                font-size: 18px;
+            }
+            .dashboard-stats .stat-label {
+                font-size: 10px;
+            }
+            .dashboard-metrics {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+            .metric-card {
+                padding: 10px;
+            }
+            .metric-card .metric-value {
+                font-size: 15px;
+            }
+            .btn {
+                font-size: 13px;
+                min-height: 44px;
+                padding: 10px 12px;
+            }
+            .nav-link {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+            .logo .logo-text {
+                font-size: 16px;
+            }
+            .logo .logo-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 18px;
+            }
+            .logo .logo-sub {
+                font-size: 7px;
+            }
+            .driver-badge {
+                font-size: 11px;
+                padding: 2px 8px 2px 4px;
+            }
+            .driver-badge .avatar {
+                width: 22px;
+                height: 22px;
+                font-size: 10px;
+            }
+            .driver-badge .name {
+                max-width: 50px;
+            }
+            .driver-badge .car-model {
+                font-size: 9px;
+                padding: 0 6px;
+            }
+            .dashboard-charts {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-chart canvas {
+                max-height: 160px;
+            }
+            .dashboard-chart.full-width canvas {
+                max-height: 180px;
+            }
+            .chart-filters .filter-btn {
+                font-size: 11px;
+                padding: 4px 12px;
+            }
+            .chart-filters .custom-date-range input {
+                font-size: 11px;
+                padding: 4px 8px;
+            }
+            .stat-change {
+                font-size: 10px;
+                padding: 1px 8px;
+            }
+            .auth-container {
+                padding: 24px 16px;
+            }
+            .profile-card {
+                padding: 20px 16px;
+            }
+            .avatar-big {
+                width: 64px;
+                height: 64px;
+                font-size: 26px;
+            }
         }
 
         .device-info {
@@ -1511,7 +1779,9 @@
             opacity: 0.5;
         }
 
-        .show-device-info .device-info { display: block; }
+        .show-device-info .device-info {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -1544,8 +1814,10 @@
     ============================================================ -->
     <div class="auth-page" id="authPage">
         <div class="auth-container" id="authContainer">
+
+            <!-- ЛОГОТИП С БУКВОЙ "Т" НА СТРАНИЦЕ РЕГИСТРАЦИИ -->
             <a href="#" class="logo">
-                <div class="logo-icon">🚗</div>
+                <div class="logo-icon">Т</div>
                 <span class="logo-text">Taxi<span>CRM</span></span>
             </a>
 
@@ -1581,14 +1853,21 @@
     </div>
 
     <!-- ============================================================
-    ШАПКА
+    ШАПКА (С НОВЫМ ЛОГОТИПОМ "Т")
     ============================================================ -->
     <header class="header" id="appHeader">
         <div class="container">
+
+            <!-- ===== НОВЫЙ ЛОГОТИП С БУКВОЙ "Т" ===== -->
             <a href="#" class="logo">
-                <div class="logo-icon">🚗</div>
-                <span class="logo-text">Taxi<span>CRM</span></span>
+                <div class="logo-icon">Т</div>
+                <div>
+                    <span class="logo-text">Taxi<span>CRM</span></span>
+                    <span class="logo-sub">Управление доходами</span>
+                </div>
             </a>
+            <!-- ===== КОНЕЦ НОВОГО ЛОГОТИПА ===== -->
+
             <div class="header-right">
                 <div class="driver-badge" id="driverBadge">
                     <div class="avatar avatar-color-0" id="avatarHeader">А</div>
@@ -1602,7 +1881,7 @@
     </header>
 
     <!-- ============================================================
-    НАВИГАЦИЯ (3 вкладки)
+    НАВИГАЦИЯ
     ============================================================ -->
     <nav class="nav" id="appNav">
         <div class="container">
@@ -1840,7 +2119,7 @@
     </div>
 
     <!-- ============================================================
-    JAVASCRIPT (ПОЛНАЯ РАБОЧАЯ ВЕРСИЯ)
+    JAVASCRIPT
     ============================================================ -->
     <script>
         (function() {
@@ -1953,13 +2232,12 @@
                 if (currentUser && currentUser.email === email) {
                     logoutUser();
                 }
-                // Удаляем данные пользователя
                 const dataKey = 'taxiCrmData_' + email;
                 localStorage.removeItem(dataKey);
             }
 
             // ============================================================
-            // ДАННЫЕ (привязаны к пользователю)
+            // ДАННЫЕ
             // ============================================================
 
             function getDataKey() {
@@ -2030,7 +2308,6 @@
                 document.getElementById('appHeader').style.display = 'block';
                 document.getElementById('appNav').style.display = 'block';
                 document.getElementById('appContent').style.display = 'block';
-                // Перезагружаем данные для текущего пользователя
                 appData = loadData();
                 updateUserUI();
                 loadProfileData();
@@ -2090,7 +2367,7 @@
             }
 
             // ============================================================
-            // АВТОРИЗАЦИЯ — ИСПРАВЛЕННАЯ
+            // АВТОРИЗАЦИЯ
             // ============================================================
 
             const authForm = document.getElementById('authForm');
@@ -2106,7 +2383,6 @@
             const regEmail = document.getElementById('regEmail');
             const regPassword = document.getElementById('regPassword');
 
-            // Получаем лейблы для скрытия
             const nameLabel = document.querySelector('label[for="regName"]');
             const carLabel = document.querySelector('label[for="regCar"]');
 
@@ -2118,12 +2394,10 @@
                     authSub.textContent = 'Войдите, чтобы продолжить учёт';
                     authSubmitBtn.textContent = '🔑 Войти';
                     toggleBtn.textContent = 'Зарегистрироваться';
-                    // Скрываем поля для регистрации
                     regName.style.display = 'none';
                     regCar.style.display = 'none';
                     if (nameLabel) nameLabel.style.display = 'none';
                     if (carLabel) carLabel.style.display = 'none';
-                    // Убираем required у скрытых полей
                     regName.removeAttribute('required');
                     regCar.removeAttribute('required');
                 } else {
@@ -2165,7 +2439,6 @@
                 }
 
                 if (isLoginMode) {
-                    // === ВХОД ===
                     const users = getAllUsers();
                     const user = users.find(u => u.email === email && u.password === password);
 
@@ -2174,9 +2447,7 @@
                         return;
                     }
 
-                    // Сохраняем сессию
                     saveUser(user);
-                    // ЗАГРУЖАЕМ ДАННЫЕ КОНКРЕТНО ЭТОГО ПОЛЬЗОВАТЕЛЯ
                     appData = loadData();
                     showAuthSuccess('Вход выполнен! 🎉');
                     setTimeout(function() {
@@ -2184,7 +2455,6 @@
                     }, 500);
 
                 } else {
-                    // === РЕГИСТРАЦИЯ ===
                     const name = regName.value.trim();
                     const car = regCar.value.trim();
 
@@ -2199,7 +2469,6 @@
                         return;
                     }
 
-                    // Новый пользователь — ВСЁ С НУЛЯ
                     const newUser = {
                         email: email,
                         password: password,
@@ -2211,11 +2480,8 @@
 
                     users.push(newUser);
                     saveUsers(users);
-
-                    // Сохраняем сессию
                     saveUser(newUser);
 
-                    // СОЗДАЁМ ПУСТЫЕ ДАННЫЕ ДЛЯ НОВОГО ПОЛЬЗОВАТЕЛЯ
                     const newDataKey = 'taxiCrmData_' + email;
                     localStorage.setItem(newDataKey, JSON.stringify(getDefaultData()));
                     appData = getDefaultData();
@@ -2250,7 +2516,7 @@
             });
 
             // ============================================================
-            // РЕДАКТИРОВАНИЕ ПРОФИЛЯ
+            // ПРОФИЛЬ
             // ============================================================
 
             document.getElementById('profileForm').addEventListener('submit', function(e) {
@@ -2323,11 +2589,8 @@
                 const user = loadUser();
                 if (!user) return;
 
-                // Удаляем данные пользователя
                 const dataKey = 'taxiCrmData_' + user.email;
                 localStorage.removeItem(dataKey);
-
-                // Удаляем пользователя из списка
                 deleteUserFromStorage(user.email);
 
                 alert('🗑️ Аккаунт удалён. Все данные стёрты.');
@@ -2335,7 +2598,7 @@
             };
 
             // ============================================================
-            // ВЫБОР ЦВЕТА АВАТАРКИ
+            // ЦВЕТ АВАТАРКИ
             // ============================================================
 
             window.selectColor = function(index) {
@@ -3104,15 +3367,12 @@
             setTheme(getCurrentTheme());
             initFilters();
 
-            // Проверяем, авторизован ли пользователь
             const savedUser = loadUser();
             if (savedUser) {
-                // Загружаем данные пользователя
                 appData = loadData();
                 showApp();
             } else {
                 showAuthPage();
-                // Режим регистрации по умолчанию
                 regName.style.display = 'block';
                 regCar.style.display = 'block';
                 if (nameLabel) nameLabel.style.display = 'block';
@@ -3126,7 +3386,7 @@
                 toggleBtn.textContent = 'Войти';
             }
 
-            console.log('✅ Taxi CRM — с профилем, аватаркой и сменой пароля (ИСПРАВЛЕНО)');
+            console.log('✅ Taxi CRM — с логотипом "Т"');
             console.log('📱 Режим:', device.isMobile ? 'Мобильный' : 'Десктопный');
             console.log('👤 Пользователь:', currentUser ? currentUser.email : 'Не авторизован');
 
